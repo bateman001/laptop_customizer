@@ -55,6 +55,7 @@ class App extends Component {
             feature={FEATURES} 
             selected={this.state.selected}
             updateFeature={this.updateFeature}
+            USCurrencyFormat={this.USCurrencyFormat}
             />
           </form>
 

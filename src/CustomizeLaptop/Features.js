@@ -4,14 +4,8 @@ import slugify from 'slugify';
 
 class Features extends React.Component {
   
-  USCurrencyFormat = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  });
 
 render(){
-  console.log(this.props.selected)
-  console.log(this.props)
   return (
   <div key={this.props.itemHash} className="feature__item">
     <input
@@ -23,7 +17,7 @@ render(){
       onClick={e => this.props.updateFeature(this.props.feature, this.props.item)}
     />
     <label htmlFor={this.props.itemHash} className="feature__label">
-      {this.props.itemName} ({this.USCurrencyFormat.format(this.props.cost)})
+      {this.props.itemName} ({this.props.USCurrencyFormat.format(this.props.cost)})
     </label>
   </div>
   )

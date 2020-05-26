@@ -2,10 +2,6 @@ import React from 'react';
 
 class Cart extends React.Component{
 
-total = Object.keys(this.props.selected).reduce(
-  (acc, curr) => acc + this.props.selected[curr].cost,
-  0
-);
 
 render(){
   console.log(this.props.selected)

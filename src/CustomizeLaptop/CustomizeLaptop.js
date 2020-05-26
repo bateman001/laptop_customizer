@@ -18,6 +18,7 @@ class CustomizeLaptop extends React.Component{
         item = {item}
         updateFeature = {this.props.updateFeature}
         selected = {this.props.selected}
+        USCurrencyFormat={this.props.USCurrencyFormat}
        />)
       } 
      )  
