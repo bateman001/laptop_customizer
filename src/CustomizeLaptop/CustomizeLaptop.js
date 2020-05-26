@@ -3,11 +3,12 @@ import Features from '../CustomizeLaptop/Features';
 import slugify from 'slugify';
 
 class CustomizeLaptop extends React.Component{
+
      options = () => {
-       console.log(this.props)
-       console.log(this.props.featureName);
+
       return this.props.FEATURES[this.props.featureName].map(item => {
            const itemHash = slugify(JSON.stringify(item));
+           
       return(
        <Features 
         itemHash = {itemHash}

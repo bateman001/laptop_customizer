@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Cart from './Cart/Cart';
-import CustomizeLaptop from './CustomizeLaptop/CustomizeLaptop';
+import MainSummary from './Cart/MainSummary';
+import MainForm from './CustomizeLaptop/MainForm';
+import FEATURES from './FEATURES';
 import './App.css';
 
 class App extends Component {
@@ -38,68 +39,31 @@ class App extends Component {
     });
   };
 
-  features = () => { 
-    console.log(this.props.features)
-   return Object.keys(this.props.features).map((feature, idx) => {
-    const featureHash = feature + '-' + idx;
-    return(
-    <CustomizeLaptop
-      featureHash = {featureHash}
-      featureName = {feature}
-      FEATURES = {this.props.features}
-      updateFeature = {this.updateFeature}
-      selected = {this.state.selected}
-    />)
-  });
-  }
-
-  summary = () => { 
-   return  Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-      return(
-        <Cart 
-          featureHash = {featureHash}
-          name= {selectedOption.name}
-          feature = {feature}
-          cost = {selectedOption.cost}
-          USCurrencyFormat ={this.USCurrencyFormat}
-          selected = {this.state.selected}
-        />
-      )
-  });
-}
-
-
-    total = () => { 
-      return Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
-    }
 
   render(){
 
-    console.log(this.state)
     return (
       <div className="App">
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
+
           <form className="main__form">
             <h2>Customize your laptop</h2>
-            {this.features()}
+            <MainForm 
+            feature={FEATURES} 
+            selected={this.state.selected}
+            updateFeature={this.updateFeature}
+            />
           </form>
+
           <section className="main__summary">
             <h2>Your cart</h2>
-            {this.summary()}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {this.USCurrencyFormat.format(this.total())}
-              </div>
-            </div>
+            <MainSummary 
+            selected={this.state.selected}
+            USCurrencyFormat={this.USCurrencyFormat}
+            />
           </section>
         </main>
       </div>
@@ -108,3 +72,4 @@ class App extends Component {
 }
 
 export default App;
+
